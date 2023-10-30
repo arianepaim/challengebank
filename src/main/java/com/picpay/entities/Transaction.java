@@ -21,5 +21,5 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "payee_id")
     private User payee;
-    private Double balance;
+    private Double amount;
 }
