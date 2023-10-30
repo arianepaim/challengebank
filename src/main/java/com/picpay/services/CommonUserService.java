@@ -1,6 +1,7 @@
 package com.picpay.services;
 
 import com.picpay.entities.CommonUser;
+import com.picpay.entities.exceptions.ResourceNotFoundException;
 import com.picpay.repositories.CommonUserRepository;
 import com.picpay.shared.CommonUserDTO;
 import org.modelmapper.ModelMapper;
@@ -13,9 +14,9 @@ public class CommonUserService {
     @Autowired
     CommonUserRepository commonUserRepository;
 
-    public CommonUserDTO findById(Long id) throws Exception {
+    public CommonUserDTO findById(Long id) {
         CommonUser user = commonUserRepository.findById(id)
-                .orElseThrow(() -> new Exception("Usuário não encontrado."));
+                .orElseThrow(() -> new ResourceNotFoundException("Usuário com o id " + id + " não encontrado."));
         return new ModelMapper().map(user, CommonUserDTO.class);
     }
 
@@ -29,9 +30,9 @@ public class CommonUserService {
         return dto;
     }
 
-    public CommonUserDTO update(CommonUserDTO dto, Long id) throws Exception {
+    public CommonUserDTO update(CommonUserDTO dto, Long id) {
         if (!commonUserRepository.existsById(id)) {
-            throw new Exception("Usuário não encontrado");
+            throw new ResourceNotFoundException("Usuário com o id " + id + " não encontrado.");
         }
         dto.setId(id);
 

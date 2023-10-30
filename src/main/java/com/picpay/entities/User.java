@@ -33,4 +33,5 @@ public abstract class User {
     @NotNull
     @NotBlank
     private String password;
+    private Double balance;
 }
