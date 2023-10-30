@@ -15,9 +15,4 @@ public class CommonUser extends User{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Override
-    public boolean transfer(double value, User payer, User payee) {
-        return false;
-    }
 }

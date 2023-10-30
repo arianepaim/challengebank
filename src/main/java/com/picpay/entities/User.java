@@ -33,9 +33,4 @@ public abstract class User {
     @NotNull
     @NotBlank
     private String password;
-    private Double balance;
-
-    public boolean transfer(double value, User payer, User payee) {
-        return false;
-    }
 }
