@@ -1,12 +1,13 @@
 package com.picpay.services;
 
+import com.picpay.view.AuthorizationResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(name = "authorization-service", url = "https://run.mocky.io/v3/8fafdd68-a090-496f-8c9a-3442cf30dae6")
+@FeignClient(name = "authorization-service", url = "https://run.mocky.io/v3/55badc16-62d4-41dd-8b10-6749db929048")
 public interface AuthorizationService {
 
     @GetMapping
-    boolean checkAuthorization();
+    AuthorizationResponse checkAuthorization();
 }
 

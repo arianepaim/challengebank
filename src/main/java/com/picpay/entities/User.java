@@ -1,21 +1,22 @@
 package com.picpay.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class User {
+@EqualsAndHashCode(of = "id")
+@Table(name = "tb_user")
+public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @NotNull
     @NotBlank
     private String nameFirst;
@@ -34,4 +35,6 @@ public abstract class User {
     @NotBlank
     private String password;
     private Double balance;
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
 }
